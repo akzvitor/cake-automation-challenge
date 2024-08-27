@@ -1,0 +1,88 @@
+<mvc:View controllerName="ui5.coders.app.Obra.Listagem"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core">
+    <Page title="{i18n>ListagemObra.titulo}" class="sapUiContentPadding" titleAlignment="Center" backgroundDesign="List">
+        <headerContent>
+            <Button id="botaoAdicionarObra" icon="sap-icon://create-form" text="{i18n>ListagemObra.botaoAdicionarListagemObra}" press="aoClicarNoBotaoAdicionarObra"/>
+        </headerContent>
+        <content>
+            <VBox>
+                <Table id="tabelaObras" growing="true" growingThreshold="10" inset="false" width="auto" alternateRowColors="true" items="{
+            path: 'restObras>/',
+            sorter: {
+                path: 'titulo'
+            }
+        }">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="{i18n>ListagemObra.titulo}" level="H2"/>
+                                <ToolbarSpacer />
+                                <core:Icon src="sap-icon://add-filter"/>
+                                <Input id="tituloFiltroInput" placeholder="{i18n>Obra.Titulo}" width="18%" change="aoAlterarInputFiltro" autocomplete="false"/>
+                                <Input id="autorFiltroInput" placeholder="{i18n>Obra.Autor}" width="10%" change="aoAlterarInputFiltro"/>
+                                <!-- <DateRangeSelection id="dateRangeFiltroInput" class="DRS1" value= "{
+				            'type': 'sap.ui.model.type.DateInterval',
+				            'formatOptions': {
+					        'pattern': 'dd/MM/yyyy'
+				            },
+				            'parts': [
+					            {
+						            'type': 'sap.ui.model.type.Date',
+						            'path': '/start'
+					            },
+					            {
+						            'type': 'sap.ui.model.type.Date',
+						            'path': '/end'
+					            }
+				            ]
+			            }" change="aoAlterarInputFiltro" width="18%" placeholder="{i18n>Compra.Data}" showFooter="true" /> -->
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column width="6rem">
+                            <Text text="{i18n>Obra.Titulo}" />
+                        </Column>
+                        <Column hAlign="Center" width="12rem">
+                            <Text text="{i18n>Obra.Capitulos}" />
+                        </Column>
+                        <Column hAlign="Center" width="12rem">
+                            <Text text="{i18n>Obra.Formato}" />
+                        </Column>
+                        <Column hAlign="Center" width="12rem">
+                            <Text text="{i18n>Obra.Status}" />
+                        </Column>
+                        <Column hAlign="Center" width="12rem">
+                            <Text text="{i18n>Obra.Autor}" />
+                        </Column>
+                        <Column hAlign="Center" width="12rem">
+                            <Text text="{i18n>Obra.Valor}" />
+                        </Column>
+                        <!-- <Column hAlign="Center" width="12rem">
+                            <Text text="{i18n>Compra.Data}" />
+                        </Column> -->
+                    </columns>
+                    <items >
+                        <ColumnListItem type="Navigation" press="aoSelecionarObra">
+                            <cells>
+                                <Text text="{restObras>titulo}" />
+                                <Text text="{restObras>numeroCapitulos}" />
+                                <Text text="{restObras>Formato}" />
+                                <Text text="{restObras>foiFinalizada}" />
+                                <Text text="{restObras>autor}" />
+                                <Text text="{restObras>valorObra}" />
+                                <!-- <Text text="{
+                                path: 'restObras>valorObra',
+                                formatter: '.formatter.formatarObra'
+                            }" /> -->
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <Bar />
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

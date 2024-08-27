@@ -1,0 +1,115 @@
+<mvc:View controllerName="ui5.coders.app.CompraCliente.Detalhes"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:cards="sap.f.cards"
+    xmlns:l="sap.ui.layout"
+    xmlns:lf="sap.ui.layout.form">
+    <Page id="paginaDetalhes" title="{i18n>Detalhes.Titulo}" titleAlignment="Center" binding="{restCompras>/}"
+        navButtonPress="onNavBack" showNavButton="true" backgroundDesign="List"
+        class="sapUiContentPadding">
+        <headerContent>
+            <Button text="{i18n>Detalhes.BotaoEditar}" icon="sap-icon://edit" press="aoClicarNoBotaoEditar" id="botaoEditar"/>
+        </headerContent>
+        <OverflowToolbar id="TB1">
+            <core:Icon src="sap-icon://information" color="Tile" />
+            <Title class="sapUiSmallMargin" id="Title1" text="{i18n>Detalhes.HeaderDados}" />
+            <ToolbarSpacer />
+        </OverflowToolbar>
+        <content>
+            <HBox class="sapUiSmallMargin">
+                <VBox class="sapUiLargeMarginEnd">
+                    <ObjectListItem intro="{i18n>Compra.Nome}" title="{restCompras>nome}" />
+                    <ObjectListItem intro="{i18n>Compra.Email}" title="{restCompras>email}" />
+                </VBox>
+                <VBox class="sapUiLargeMarginBeginEnd">
+                    <ObjectListItem intro="{i18n>Compra.Cpf}"
+                        title="{
+                                path: 'restCompras>cpf',
+                                formatter: '.formatter.formatarCpf'
+                            }" />
+                    <ObjectListItem intro="{i18n>Compra.Telefone}"
+                        title="{
+                                path: 'restCompras>telefone',
+                                formatter: '.formatter.formatarTelefone'
+                            }" />
+                </VBox>
+                <VBox class="sapUiLargeMarginBegin">
+                    <ObjectListItem intro="{i18n>Detalhes.DataCompra}"
+                        title="{
+                                path: 'restCompras>dataCompra',
+                                formatter: '.formatter.formatarData'
+                            }" />
+                    <ObjectListItem intro="{i18n>Detalhes.ValorTotal}" id="objValorTotal"
+                        title="{
+                                path: 'restCompras>valorCompra',
+                                formatter: '.formatter.formatarValor'
+                            }" />
+                </VBox>
+            </HBox>
+        </content>
+        <content>
+            <OverflowToolbar class="sapUiLargeMarginTop">
+                <core:Icon src="sap-icon://bbyd-active-sales" color="Tile" />
+                <Title class="sapUiSmallMargin" text="{i18n>Detalhes.HeaderProdutos}" />
+                <ToolbarSpacer />
+            </OverflowToolbar>
+            <HBox >
+                <Table class="sapUiSmallMargin" id="tabelaObras" growing="true" growingThreshold="7"
+                    inset="false" width="auto"
+                    items="{
+                path: 'restObras>/',
+                sorter: {
+                    path: 'titulo'
+                }
+            }">
+                    <columns>
+                        <Column width="15rem">
+                            <Text text="{i18n>Obra.Titulo}" />
+                        </Column>
+                        <Column hAlign="Begin" width="9rem">
+                            <Text text="{i18n>Obra.Autor}" />
+                        </Column>
+                        <Column hAlign="Begin" width="6rem">
+                            <Text text="{i18n>Obra.Formato}" />
+                        </Column>
+                        <Column hAlign="Center" width="6rem">
+                            <Text text="{i18n>Obra.Capitulos}" />
+                        </Column>
+                        <Column hAlign="Center" width="6rem">
+                            <Text text="{i18n>Obra.Valor}" />
+                        </Column>
+                        <Column hAlign="Center" width="12rem">
+                            <Text text="{i18n>Obra.InicioPubli}" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{restObras>titulo}" />
+                                <Text text="{restObras>autor}" />
+                                <Text
+                                    text="{
+                                    path: 'restObras>formato',
+                                    formatter: '.formatter.formatarFormato'
+                                }" />
+                                <Text text="{restObras>numeroCapitulos}" />
+                                <Text
+                                    text="{
+                                    path: 'restObras>valorObra',
+                                    formatter: '.formatter.formatarValor'
+                                }" />
+                                <Text
+                                    text="{
+                                    path: 'restObras>inicioPublicacao',
+                                    formatter: '.formatter.formatarData'
+                                }" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </HBox>
+        </content>
+    </Page>
+</mvc:View>

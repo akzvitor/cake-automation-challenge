@@ -1,0 +1,13 @@
+<mvc:View controllerName="ui5.coders.app.CompraCliente.Listagem"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page title="{i18n>PaginaInicial.titulo}" class="sapUiContentPadding" titleAlignment="Center" backgroundDesign="List">
+        <headerContent>
+            <Button id="botaoAdicionar" icon="sap-icon://create-form" text="{i18n>Listagem.botaoAdicionar}" press="aoClicarNoBotaoAdicionar" />        </headerContent>
+        <content>
+            <VBox class="sapUiSmallMargin" backgroundDesign="Solid">
+                <mvc:XMLView viewName="ui5.coders.app.CompraCliente.Listagem" />
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

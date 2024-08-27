@@ -1,0 +1,104 @@
+{
+    "_version": "1.58.0",
+    "sap.app": {
+        "id": "ui5.coders",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{App.titulo}}",
+        "description": "{{App.descricao}}",
+        "type": "application",
+        "applicationVersion": {
+            "version": "1.0.0"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "1.108.0",
+            "libs": {
+                "sap.f": {},
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ui5.coders.i18n.i18n",
+                    "supportedLocales": [
+                        ""
+                    ],
+                    "fallbackLocale": ""
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "ui5.coders.app.App",
+            "type": "XML",
+            "id": "app"
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "type": "View",
+                "viewType": "XML",
+                "path": "ui5.coders",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "transition": "slide",
+                "bypassed": {
+                    "target": "notFound"
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "listagem",
+                    "target": "listagem"
+                },
+                {
+                    "pattern": "criacaoCompra",
+                    "name": "criacaoCompra",
+                    "target": "criacaoCompra"
+                },
+                {
+                    "pattern": "detalhes/{idCompra}",
+                    "name": "detalhes",
+                    "target": "detalhes"
+                },
+                {
+                    "pattern": "edicaoCompra/{idCompra}",
+                    "name": "edicaoCompra",
+                    "target": "criacaoCompra"
+                }
+            ],
+            "targets": {
+                "listagem": {
+                    "id": "listagem",
+                    "name": "app.CompraCliente.Listagem"
+                },
+                "notFound": {
+                    "id": "notFound",
+                    "name": "app.NotFound.NotFound",
+                    "transition": "show"
+                },
+                "criacaoCompra": {
+                    "id": "criacaoCompra",
+                    "name": "app.CompraCliente.CriacaoCompra"
+                },
+                "detalhes": {
+                    "id": "detalhes",
+                    "name": "app.CompraCliente.Detalhes"
+                }
+            }
+        }
+    }
+}
